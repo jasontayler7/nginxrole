@@ -3,7 +3,10 @@
   apt:
     name: nginx
     state: present
-- name: "starting nginx"
-  service:
-    name: nginx
-    state: started
+- name: copying index.html to /var/www/html/
+  copy:
+    src: index.html
+    dest: /var/www/html/
+  notify:
+    -  restart nginx
+                       
